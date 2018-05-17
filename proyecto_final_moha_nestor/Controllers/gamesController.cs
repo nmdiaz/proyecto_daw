@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace proyecto_final_moha_nestor.Controllers
 {
     public class gamesController : Controller
@@ -33,7 +34,7 @@ namespace proyecto_final_moha_nestor.Controllers
 
         // POST: arcanoid
         [HttpPost]
-        public  string arcanoid(recordModel record)
+        public  string arcanoid(recordjson recordjs)
         {
             if(!ModelState.IsValid)
             {
@@ -42,6 +43,7 @@ namespace proyecto_final_moha_nestor.Controllers
             }
             else
             {
+                var record = conversor.convertir(recordjs);
                 DataSaver.SaveData(record);
                 return "Good";
             }
