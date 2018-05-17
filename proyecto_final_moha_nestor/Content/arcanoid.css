@@ -1,0 +1,27 @@
+﻿#tablero{
+	height:633px;
+	width:590px;
+	background-image:url("../../resources/backgroundar.png");
+	margin:0 auto;
+	margin-bottom:1em;
+}
+#puntuacion{
+	padding:2em;
+	width:500px;
+	border:2px solid white;
+	border-radius:1em;
+	height:2em;
+	margin:0 auto;
+	color:green;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+#puntuacion > p {
+	width:50%;
+	font-size:1.5em;
+	
+}
+#puntuacion > p > span{
+	font-size:1.5em;
+}
