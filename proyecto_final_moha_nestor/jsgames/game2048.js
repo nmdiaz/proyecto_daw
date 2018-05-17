@@ -8,6 +8,7 @@ let body = document.getElementsByTagName("body")[0];
 let boton = document.createElement("button");
 let center = document.getElementsByTagName("center")[0];
 
+boton.id = "ngame";
 boton.innerHTML = "Nueva partida"
 center.appendChild(boton);
 
@@ -209,4 +210,4 @@ document.addEventListener("keydown", function (e) {
     }
 }, true);
 
-let a = document.getElementsByTagName("button")[0].addEventListener("click", cargar, true);
+document.getElementById("ngame").addEventListener("click", cargar, true);
