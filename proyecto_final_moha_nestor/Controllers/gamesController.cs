@@ -1,6 +1,9 @@
-﻿using System;
+﻿using proyecto_final_moha_nestor.logic;
+using proyecto_final_moha_nestor.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -22,9 +25,27 @@ namespace proyecto_final_moha_nestor.Controllers
         }
 
         // GET: arcanoid
+        [HttpGet]
         public ActionResult arcanoid()
         {
             return View();
+        }
+
+        // POST: arcanoid
+        [HttpPost]
+        public  string arcanoid(recordModel record)
+        {
+            if(!ModelState.IsValid)
+            {
+                //agregar error de no poderse guardar
+                return "Fail";
+            }
+            else
+            {
+                DataSaver.SaveData(record);
+                return "Good";
+            }
+            
         }
     }
 }

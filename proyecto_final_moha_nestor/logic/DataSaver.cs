@@ -8,28 +8,28 @@ namespace proyecto_final_moha_nestor.logic
 {
     public class DataSaver
     {
-        public bool SaveData(recordModel model)
+        public static bool SaveData(recordModel model)
         {
-            var conetionString = "Data Source=(LocalDb)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-proyecto_final_moha_nestor-20180515073549.mdf;Initial Catalog=aspnet-proyecto_final_moha_nestor-20180515073549;Integrated Security=True";
-            try
-            {
-                System.Data.SqlClient.SqlConnection sqlConnection1 =
-                new System.Data.SqlClient.SqlConnection(conetionString);
+            var conectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-proyecto_final_moha_nestor-20180515073549.mdf;Initial Catalog=aspnet-proyecto_final_moha_nestor-20180515073549;Integrated Security=True";
+            
+                System.Data.SqlClient.SqlConnection sqlConnection1 = new System.Data.SqlClient.SqlConnection(conectionString);
                 System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = $"INSERT Records (IdGame, IdUser, RecordTimeStamp, Points) VALUES ({model.idGame}, {model.idUser}, {model.time},{model.score})";
-                cmd.Connection = sqlConnection1;
 
+                cmd.CommandText = $"INSERT INTO Records (IdGame, IdUser, RecordTimeStamp, Points) VALUES (@idjuego, @idusuario, @tiempo, @puntos)";
+                cmd.Parameters.AddWithValue("@idjuego", model.idGame);
+            cmd.Parameters.AddWithValue("@idusuario", model.idUser);
+            cmd.Parameters.AddWithValue("@tiempo", model.time);
+            cmd.Parameters.AddWithValue("@puntos", model.score);
+
+            cmd.Connection = sqlConnection1;
                 sqlConnection1.Open();
-                cmd.ExecuteNonQuery();
+                var error = cmd.ExecuteNonQuery();
                 sqlConnection1.Close();
-
                 return true;
-            }
-            catch
-            {
-                return false;
-            }
+
+
+  
         }
 
     }

@@ -12,7 +12,7 @@ namespace proyecto_final_moha_nestor.Models
         public string idGame { get; set; }
 
         [Required]
-        public TimestampAttribute time { get; set; } 
+        public string time { get; set; } 
 
         [Required]
         public int score { get; set; }
