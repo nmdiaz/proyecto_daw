@@ -240,6 +240,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="jsgames\arcanoid.js" />
     <Content Include="jsgames\game2048.js" />
+    <Content Include="resources\2048.png" />
+    <Content Include="resources\2048i.png" />
+    <Content Include="resources\arcanoid.gif" />
+    <Content Include="resources\records_2048.gif" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -304,7 +308,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="resources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
