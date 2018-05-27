@@ -585,6 +585,7 @@
         bolalanzada = false;
     }
     function perder() {
+    	requestSaveRecord(puntuacion);
         let tabler = document.getElementById('tablero');
         let texto = document.createElement('h2');
         let aux;
@@ -643,7 +644,7 @@
     
 })();
 //Funcion para guardar records en bd
-function requestSaveRecord() {
+function requestSaveRecord(puntuacion) {
     var xhr = new XMLHttpRequest();
     var url = "http://localhost:54321/games/arcanoid";
     xhr.open("POST", url, true);
@@ -657,6 +658,6 @@ function requestSaveRecord() {
     var user = document.getElementById("usuario").innerHTML;
     var time = new Date().toLocaleString();
 	
-    var data = JSON.stringify({ "UserName": user, "IdGame": "2", "time": time, "score": "52" });
+    var data = JSON.stringify({ "UserName": user, "IdGame": "2", "time": time, "score": puntuacion });
     xhr.send(data);
 }
