@@ -6851,15 +6851,52 @@ td.visible-print {
 	a.imagenprueba
 	{
 		object-fit:cover;
-		background:url(../../resources/records_arcanoid.png) no-repeat center center;
+		background:url(../../resources/arcanoid_records.png) no-repeat center center;
 		display:block;
 		margin-top:50px;
 		text-indent:-9999px;
 		min-height:400px;
 		max-width:373px;
 		border-radius:50px;
+        background-size:339px;
 	}
+    a.imagenprueba:hover
+    {
+        object-fit:cover;
+        background:url(../resources/arcanoid.gif) no-repeat center center;
+        display:block;
+		margin-top:50px;
+		text-indent:-9999px;
+		min-height:400px;
+		max-width:373px;
+		border-radius:50px;
+        background-size:339px;
+    }
  	div.imgrecords 
 	{
 		min-height:444px;
  	}
+    a.imagen2048
+    {
+        object-fit:cover;
+		background:url(../resources/2048i.png) no-repeat center center;
+		display:block;
+		margin-top:50px;
+		text-indent:-9999px;
+		min-height:400px;
+		max-width:373px;
+        border-radius:50px;
+        background-size:335px;
+    }
+    a.imagen2048:hover
+    {
+        object-fit:cover;
+        background:url(../resources/records_2048.gif) no-repeat center center;
+        display:block;
+		margin-top:50px;
+		text-indent:-9999px;
+		min-height:400px;
+		max-width:373px;
+        border-radius:50px;
+        background-size:335px;
+    }
