@@ -205,11 +205,13 @@
     </Compile>
     <Compile Include="logic\conversor.cs" />
     <Compile Include="logic\DataSaver.cs" />
+    <Compile Include="logic\get_records.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\recordjson.cs" />
     <Compile Include="Models\RecordModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RecordsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -282,6 +284,7 @@
     <Content Include="Views\Records\Arcanoid.cshtml" />
     <Content Include="Views\Records\g2048.cshtml" />
     <Content Include="Views\Records\PersonalRecords.cshtml" />
+    <Content Include="Views\Shared\_NotLogged.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -45,7 +45,7 @@ namespace proyecto_final_moha_nestor.Controllers
             {
                 var record = conversor.convertir(recordjs);
                 DataSaver.SaveData(record);
-                return "Good";
+                return "{\"status\":\"correct\" }";
             }
             
         }
