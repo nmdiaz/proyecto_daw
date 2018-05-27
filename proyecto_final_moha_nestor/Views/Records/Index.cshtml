@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+<center>
+	<h2>Records generales</h2>
+	<div class="row">
+		<div class="col-md-1">
+		</div>
+		<div class="col-md-10">
+			@Html.ActionLink("Mis records personales", "PersonalRecords", "Records", null, null, null, null, new { @class = "recordsPersonales" })
+		</div>
+		<div class="col-md-1">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1">
+		</div>
+		<div class="col-md-5 imgrecords">
+			<a>@Html.ActionLink("Records 2048", "g2048", "Records", null, null, null, null, new { @class = "imagenprueba" })</a>
+		</div>
+		<div class="col-md-5 imgrecords">
+			@Html.ActionLink("Records personales", "Arcanoid", "Records", null, null, null, null, new { @class = "imagenprueba" })
+		</div>
+		<div class="col-md-1">
+		</div>
+	</div>
+</center>
+ <style type="text/css">
+
+
+ </style>

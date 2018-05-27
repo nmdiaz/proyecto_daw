@@ -199,11 +199,14 @@
     <Compile Include="Controllers\gamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RecordsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="logic\conversor.cs" />
     <Compile Include="logic\DataSaver.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\recordjson.cs" />
     <Compile Include="Models\RecordModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -275,6 +278,10 @@
     <Content Include="Views\games\g2048.cshtml" />
     <Content Include="Views\games\Index.cshtml" />
     <Content Include="Views\games\arcanoid.cshtml" />
+    <Content Include="Views\Records\Index.cshtml" />
+    <Content Include="Views\Records\Arcanoid.cshtml" />
+    <Content Include="Views\Records\g2048.cshtml" />
+    <Content Include="Views\Records\PersonalRecords.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

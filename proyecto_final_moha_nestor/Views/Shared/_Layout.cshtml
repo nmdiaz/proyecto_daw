@@ -19,13 +19,8 @@
                 </button>
                 @Html.ActionLink("Todo juegos(nombre que sea)", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Juegos", "Index", "games")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+			@Html.Partial("_NotLogged")
+            
         </div>
     </div>
     <div class="container body-content">

@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "_NotLogged";
+}
+
+<div class="navbar-collapse collapse">
+@if (Request.IsAuthenticated)
+{
+	<ul class="nav navbar-nav">
+		<li>@Html.ActionLink("Home", "Index", "Home")</li>
+		<li>@Html.ActionLink("Juegos", "Index", "games")</li>
+		<li>@Html.ActionLink("Records", "Index", "Records")</li>
+	</ul>
+	@Html.Partial("_LoginPartial")
+}
+else
+{
+	@Html.Partial("_LoginPartial")
+}
+</div>

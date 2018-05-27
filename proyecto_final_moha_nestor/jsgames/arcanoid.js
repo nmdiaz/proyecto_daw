@@ -639,20 +639,24 @@
         return niveles;
     }
 
-    function requestSaveRecord() {
-        var xhr = new XMLHttpRequest();
-        var url = "http://localhost:54321/games/arcanoid";
-        xhr.open("POST", url, true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var json = JSON.parse(xhr.responseText);
-                console.log(json.email + ", " + json.password);
-            }
-        };
-        var time = new Date().toLocaleString()
-        var data = JSON.stringify({ "idUser": "1526c610-1bab-4cb3-9e7c-61df032c0926", "IdGame": "2", "time": time, "score": puntuacion });
-        xhr.send(data);
-    }
-
+    
+    
 })();
+//Funcion para guardar records en bd
+function requestSaveRecord() {
+    var xhr = new XMLHttpRequest();
+    var url = "http://localhost:54321/games/arcanoid";
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var json = JSON.parse(xhr.responseText);
+            console.log(json.email + ", " + json.password);
+        }
+    };
+    var user = document.getElementById("usuario").innerHTML;
+    var time = new Date().toLocaleString();
+	
+    var data = JSON.stringify({ "UserName": user, "IdGame": "2", "time": time, "score": "52" });
+    xhr.send(data);
+}

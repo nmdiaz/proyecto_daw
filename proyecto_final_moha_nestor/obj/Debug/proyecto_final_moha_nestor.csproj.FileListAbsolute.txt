@@ -159,6 +159,5 @@ E:\proyectos visual studio\proyecto_final_daw\proyecto_final_moha_nestor\proyect
 E:\proyectos visual studio\proyecto_final_daw\proyecto_final_moha_nestor\proyecto_final_moha_nestor\bin\Microsoft.Owin.Security.Google.xml
 E:\proyectos visual studio\proyecto_final_daw\proyecto_final_moha_nestor\proyecto_final_moha_nestor\bin\Microsoft.Owin.Security.Twitter.xml
 E:\proyectos visual studio\proyecto_final_daw\proyecto_final_moha_nestor\proyecto_final_moha_nestor\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\proyectos visual studio\proyecto_final_daw\proyecto_final_moha_nestor\proyecto_final_moha_nestor\obj\Debug\proyecto_final_moha_nestor.csprojResolveAssemblyReference.cache
 E:\proyectos visual studio\proyecto_final_daw\proyecto_final_moha_nestor\proyecto_final_moha_nestor\obj\Debug\proyecto_final_moha_nestor.dll
 E:\proyectos visual studio\proyecto_final_daw\proyecto_final_moha_nestor\proyecto_final_moha_nestor\obj\Debug\proyecto_final_moha_nestor.pdb
