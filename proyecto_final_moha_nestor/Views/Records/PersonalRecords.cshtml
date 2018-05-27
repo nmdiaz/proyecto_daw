@@ -1,7 +1,47 @@
-﻿
+﻿@using proyecto_final_moha_nestor.Models;
 @{
-    ViewBag.Title = "PersonalRecords";
+	ViewBag.Title = "PersonalRecords";
 }
 
-<h2>PersonalRrecords</h2>
+@{
+	var record = (RecordsViewModel[][])ViewData["Records"];
+}
+<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+<center>
+	<div id="records">
+		<div class="row">
+			<div class="col-md-12 cabecera"> Records en 2048</div>
+		</div>
+		@{var c = 1;
 
+			while (record[0][c - 1] != null)
+			{
+			<div class="row">
+				<div class="col-md-1 datos">@c.</div>
+				<div class="col-md-4 datos">@record[0][c - 1].Username</div>
+				<div class="col-md-5 datos">@record[0][c - 1].time</div>
+				<div class="col-md-2 datos">@record[0][c - 1].score puntos</div>
+			</div>
+				c++;
+				if (c > 5) { break; };
+			}
+		}
+		<div class="row nuevorecord">
+			<div class="col-md-12 cabecera"> Records en Arcanoid</div>
+		</div>
+		@{c = 1;
+
+			while (record[1][c - 1] != null)
+			{
+			<div class="row">
+				<div class="col-md-1 datos">@c.</div>
+				<div class="col-md-4 datos">@record[1][c - 1].Username</div>
+				<div class="col-md-5 datos">@record[1][c - 1].time</div>
+				<div class="col-md-2 datos">@record[1][c - 1].score puntos</div>
+			</div>
+				c++;
+				if (c > 5) { break; };
+			}
+			}
+	</div>
+</center>

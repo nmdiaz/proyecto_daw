@@ -24,31 +24,8 @@
 					<div class="col-md-2 datos">@record[c-1].score puntos</div>
 				</div>
 				c++;
+				if (c > 10) { break; };
 			}
 		}
 	</div>
 </center>
-
-<style>
-	#records {
-		margin-top: 25px;
-		font-family: 'Press Start 2P', cursive;
-	}
-
-		#records .cabecera {
-			color: Highlight;
-			font-size: 35px;
-			text-align: center;
-			margin-bottom: 5px;
-		}
-
-		#records .datos {
-			font-size: 20px;
-			color: lightgreen;
-			padding: 10px 0 10px 0;
-		}
-
-		#records .row {
-			border-bottom: 1px solid red;
-		}
-</style>

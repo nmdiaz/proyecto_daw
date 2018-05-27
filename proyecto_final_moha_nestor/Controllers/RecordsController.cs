@@ -1,4 +1,6 @@
-﻿using proyecto_final_moha_nestor.logic;
+﻿using Microsoft.AspNet.Identity;
+using proyecto_final_moha_nestor.logic;
+using proyecto_final_moha_nestor.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,13 +29,18 @@ namespace proyecto_final_moha_nestor.Controllers
 		//Get Records/g2048
 		public ActionResult g2048()
 		{
-			var a = get_records.sacarRecords("1");
-			ViewData["Records"] = a;
+			var records = get_records.sacarRecords("1");
+			ViewData["Records"] = records;
 			return View();
 		}
 
 		public ActionResult PersonalRecords()
 		{
+			var idusuario = User.Identity.GetUserId();
+			RecordsViewModel[][] records = new RecordsViewModel[2][]; 
+			records[0] = get_records.sacarRecordsPersonales(idusuario, "1");
+			records[1] = get_records.sacarRecordsPersonales(idusuario, "2");
+			ViewData["Records"] = records;
 			return View();
 		}
 	}
