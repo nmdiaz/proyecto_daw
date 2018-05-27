@@ -383,7 +383,6 @@
 
     let scor = document.getElementById('scor').style.color = "white";
     document.getElementById("ngame").addEventListener("click", cargar, true);
-    document.getElementsByClassName('body-content')[0].style.backgroundImage = "url(../content/images/fondo2.gif";
 
     function randomColor() {
         let tcolor = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
