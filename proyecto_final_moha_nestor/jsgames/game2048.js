@@ -319,7 +319,9 @@
             }
         }
         if (gameover) {
-            alert("Game over!");
+        	requestSaveRecord(score);
+        	alert("Game over!");
+        	
         }
         return false;
     }
@@ -401,3 +403,21 @@
     }
 
 })();
+ //guardar record
+function requestSaveRecord(puntuacion) {
+	var xhr = new XMLHttpRequest();
+	var url = "http://localhost:54321/games/g2048";
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+			var json = JSON.parse(xhr.responseText);
+			console.log(json.email + ", " + json.password);
+		}
+	};
+	var user = document.getElementById("usuario").innerHTML;
+	var time = new Date().toLocaleString();
+
+	var data = JSON.stringify({ "UserName": user, "IdGame": "1", "time": time, "score": puntuacion });
+	xhr.send(data);
+}

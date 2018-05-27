@@ -49,5 +49,23 @@ namespace proyecto_final_moha_nestor.Controllers
             }
             
         }
-    }
+
+		// POST: g2048
+		[HttpPost]
+		public string g2048(recordjson recordjs)
+		{
+			if (!ModelState.IsValid)
+			{
+				//agregar error de no poderse guardar
+				return "Fail";
+			}
+			else
+			{
+				var record = conversor.convertir(recordjs);
+				DataSaver.SaveData(record);
+				return "{\"status\":\"correct\" }";
+			}
+
+		}
+	}
 }
