@@ -314,8 +314,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #333333;
-  background-color: #ffffff;
+  color: white;
+  background-color: black;
 }
 
 input,
@@ -6814,3 +6814,52 @@ td.visible-print {
     display: none !important;
   }
 }
+
+	a.recordsPersonales
+	{
+		object-fit:cover;
+		background:url(../../resources/records_personal.jpg) no-repeat center center;
+		display:block;
+		min-height:150px;
+		border-radius: 50px;
+		color:red;
+		font-family: 'Press Start 2P', cursive;
+		font-size:30px;
+		line-height:150px;
+	}
+	a.recordsPersonales:link
+	{
+	   color:red;
+	   text-decoration:none;
+	}
+	a.recordsPersonales:visited
+	{
+	   color:red;
+	   text-decoration:none;
+	}
+	a.recordsPersonales:hover
+	{
+	   color:red;
+	   text-decoration:none;
+	}
+	a.recordsPersonales:active
+	{
+		color:red;
+		text-decoration:none;
+	}
+
+	a.imagenprueba
+	{
+		object-fit:cover;
+		background:url(../../resources/records_arcanoid.png) no-repeat center center;
+		display:block;
+		margin-top:50px;
+		text-indent:-9999px;
+		min-height:400px;
+		max-width:373px;
+		border-radius:50px;
+	}
+ 	div.imgrecords 
+	{
+		min-height:444px;
+ 	}
