@@ -9,12 +9,21 @@
     }
 </style>
 <h2>2048</h2>
+
 <center>
-    <div class="row">
-        <div class="col-md-12">
-            <div id="tablero"></div>
-            <h2 id="scor">Score : <span style="display:inline;" id="score"></span></h2>
-            <script src="../../jsgames/game2048.js" language="javascript" type="text/javascript"></script>
-        </div>
-    </div>
+	@if (Request.Browser.IsMobileDevice)
+	{
+	<div class="row">
+		<div class="col-md-12">
+			<div id="tablero"></div>
+			<h2 id="scor">Score : <span style="display:inline;" id="score"></span></h2>
+			<script src="../../jsgames/game2048.js" language="javascript" type="text/javascript"></script>
+		</div>
+	</div>
+
+	}
+	else
+	{
+		@Html.Partial("_NotSupported");
+	}
 </center>

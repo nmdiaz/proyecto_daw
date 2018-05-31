@@ -4,6 +4,8 @@
 }
 <link href="../../Content/arcanoid.css" rel="stylesheet" type="text/css" />
 <h2>arcanoid</h2>
+@if (!Request.Browser.IsMobileDevice)
+{
 <div class="row" id="arcanoid">
     <div class="col-md-12">
         <article id="tablero"></article>
@@ -14,3 +16,8 @@
         <script src="../../jsgames/arcanoid.js"></script>
     </div>
 </div>
+}
+else
+{
+	  @Html.Partial("_NotSupported");
+}
