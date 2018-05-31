@@ -383,7 +383,7 @@
         }
     }, true);
 
-    let scor = document.getElementById('scor').style.color = "white";
+    let scor = document.getElementById('scor').style.color = "darkkhaki";
     document.getElementById("ngame").addEventListener("click", cargar, true);
 
     function randomColor() {

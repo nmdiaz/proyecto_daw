@@ -5,12 +5,17 @@
 
 @{
 	var record = (RecordsViewModel[])ViewData["Records"];
-}
+}<style>
+    body{
+        background-image:none;
+        background-color:black;
+    }
+    </style>
 <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 <center>
 	<div id="records">
 		<div class="row">
-			<div class="col-md-12 cabecera"> Records en Arcanoid</div>
+			<div class="col-md-12 cabecera"> Records en 2048</div>
 		</div>
 		@{var c = 1;
 
