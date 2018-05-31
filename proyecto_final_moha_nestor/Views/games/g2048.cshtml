@@ -11,7 +11,7 @@
 <h2>2048</h2>
 
 <center>
-	@if (Request.Browser.IsMobileDevice)
+	@if (!Request.Browser.IsMobileDevice)
 	{
 	<div class="row">
 		<div class="col-md-12">
