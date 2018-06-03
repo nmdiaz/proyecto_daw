@@ -10,15 +10,18 @@
 </style>
 <center>
 	<h2>Records generales</h2>
-	<div class="row">
-		<div class="col-md-1">
+	@if (Request.IsAuthenticated)
+	{
+		<div class="row">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-10">
+				@Html.ActionLink("Mis records personales", "PersonalRecords", "Records", null, null, null, null, new { @class = "recordsPersonales" })
+			</div>
+			<div class="col-md-1">
+			</div>
 		</div>
-		<div class="col-md-10">
-			@Html.ActionLink("Mis records personales", "PersonalRecords", "Records", null, null, null, null, new { @class = "recordsPersonales" })
-		</div>
-		<div class="col-md-1">
-		</div>
-	</div>
+	}
 	<div class="row">
 		<div class="col-md-1">
 		</div>

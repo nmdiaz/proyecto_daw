@@ -6,11 +6,7 @@
 <link rel="stylesheet" href="~/Content/index.css" type="text/css" />
 @if (!Request.IsAuthenticated)
 {
-<h1>Bienvenido a Retroverse</h1>
-<div id="index">
-    <a class="effect" href="~/Account/Login">Login</a>
-    <a class="effect" href="~/Account/Register">Registro</a>
-</div>
+	@Html.Partial("_indice_log_register");
 }
 else
 {

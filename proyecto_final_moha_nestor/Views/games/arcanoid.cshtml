@@ -3,11 +3,18 @@
     ViewBag.Title = "arcanoid";
 }
 <link href="../../Content/arcanoid.css" rel="stylesheet" type="text/css" />
-<h2>arcanoid</h2>
-@if (!Request.Browser.IsMobileDevice)
+
+@if (Request.IsAuthenticated)
 {
+
+	if (!Request.Browser.IsMobileDevice)
+	{
+	<h2>arcanoid</h2>
 <div class="row" id="arcanoid">
-    <div class="col-md-12">
+	<div class="col-md-2">
+		
+	</div>
+    <div class="col-md-8">
         <article id="tablero"></article>
         <div id="puntuacion">
             <p>Vidas:<span> 3 </span></p>
@@ -15,9 +22,23 @@
         </div>
         <script src="../../jsgames/arcanoid.js"></script>
     </div>
+	<div class="col-md-2 controles">
+		<h2>Controles</h2>
+		<p><span>D</span> o <span>→</span></p> 
+		<p> Moverse a la derecha</p>
+		<p><span>A</span> o <span>←</span></p>
+		<p>Moverse a la izquierda</p>
+		<p><span>Barra espaciadora</span></p>
+		<p>Lanzar bola</p>
+	</div>
 </div>
 }
 else
 {
 	  @Html.Partial("_NotSupported");
+}
+}
+else
+{
+	@Html.Partial("_indice_log_register");
 }
