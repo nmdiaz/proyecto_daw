@@ -6952,6 +6952,8 @@ td.visible-print {
 			font-size: 20px;
 			color: lightgreen;
 			padding: 10px 0 10px 0;
+			font-family: pixel, Helvetica, sans-serif;
+			font-size:30px;
 		}
 
 		#records .row {

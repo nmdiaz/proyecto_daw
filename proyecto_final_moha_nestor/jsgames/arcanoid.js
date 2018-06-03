@@ -16,13 +16,19 @@
 
     let niveles = crearniveles();
     iniciar();
-    agregarjugador();
-    agregarniveles(niveles[nivelactual]);
-    agregarbolainicio();
-    rellenarbloquesetiquetas();
+    
+    function cargarNivel()
+    {  	
+    	agregarjugador();
+    	agregarniveles(niveles[nivelactual]);
+    	agregarbolainicio();
+    	rellenarbloquesetiquetas();
+    }
 
 
-    //inicio juego
+	//inicio juego
+	//cargar primer nivel
+    cargarNivel();
     function iniciar() {
         let intervalo = setInterval(juego, 1000 / 60);
     }
@@ -40,9 +46,11 @@
             choquebolajug();
             choquebloques();
             if (bajarpower % 3 == 0) {
-                bajarpowerup();
+            	bajarpowerup();
+            	if(muriendo == 0) cogerpowerup();
             }
             bajarpower++;
+            comprobarNivelFinalizado();
         }
     }
 
@@ -89,10 +97,12 @@
 
     //Pulsaciones
     function pulsar(ev) {
+    	ev.preventDefault();
         teclas[ev.key] = true;
 
     }
     function soltar(ev) {
+    	ev.preventDefault();
         teclas[ev.key] = false;
         /*Saque inicial*/
         if ((ev.keyCode == 32) && (!bolalanzada)) sacar();
@@ -360,9 +370,7 @@
 
         return angulofinal;
     }
-    /*..................................................................
-    .......................................................................
-    ---------------------PROBLEMA CUANDO CHOQUE ENTRE DOS BLOQUES-----------*/
+    /*Choque bola con bloques*/
     function choquebloques() {
         let fichas = document.getElementsByClassName('ficha');
         let bolas = document.getElementsByClassName('bola');
@@ -489,36 +497,26 @@
         pow.style.width = "44px"
 
         switch (ficha.getAttribute('buff')) {
-            case ("0"):
-                {
-                    pow.style.backgroundImage = "url('../../resources/pilazul.png')";
-                    break;
-                }
-            case ("1"):
-                {
-                    pow.style.backgroundImage = "url('../../resources/pildorada.png')";
-                    break;
-                }
-            case ("2"):
-                {
-                    pow.style.backgroundImage = "url('../../resources/pilgris.png')";
-                    break;
-                }
-            case ("3"):
-                {
-                    pow.style.backgroundImage = "url('../../resources/pilmorada.png')";
-                    break;
-                }
-            case ("4"):
-                {
-                    pow.style.backgroundImage = "url('../../resources/pilroja.png')";
-                    break;
-                }
-            case ("5"):
-                {
-                    pow.style.backgroundImage = "url('../../resources/pilverde.png')";
-                    break;
-                }
+        	case ("0"):
+        		{
+        			pow.style.backgroundImage = "url('../../resources/pildorada.png'')";
+        			break;
+        		}
+        	case ("1"):
+        		{
+        			pow.style.backgroundImage = "url('../../resources/pilverde.png')";
+        			break;
+        		}
+        	case ("2"):
+        		{
+        			pow.style.backgroundImage = "url('../../resources/pilgris.png')";
+        			break;
+        		}
+        	case ("3"):
+        		{
+        			pow.style.backgroundImage = "url('../../resources/pilroja.png')";
+        			break;
+        		}
         }
         pow.style.backgroundPosition = "0px 0px";
         document.getElementById('tablero').appendChild(pow);
@@ -535,7 +533,8 @@
             aux = power[c].offsetTop + 11;
             power[c].style.top = aux + "px"
             power[c].style.backgroundPosition = devolverposicionnueva(bpos);
-            if ((aux - 30) > tablero.offsetWidth) {
+            if ((aux - 30) > tablero.offsetWidth)
+            {
                 power[c].parentNode.removeChild(power[c]);
             }
         }
@@ -549,13 +548,114 @@
         posicionnueva = aux1[0] + "px 0px";
         return posicionnueva;
     }
+	/*Coger powerup*/
+    function cogerpowerup()
+    {
+    	let power = document.getElementsByClassName('pow');
+    	let jugador = document.getElementById('jugador');
+    	let jugadortop = jugador.offsetTop;
+    	let jugadorleft = jugador.offsetLeft;
+    	let jugadorancho = jugador.offsetWidth;
+    	for(let c = 0; c < power.length; c++)
+    	{
+    		if(((power[c].offsetTop + 22) > jugadortop) && (power[c].offsetTop < (jugadortop + 22)))
+    		{
+    			if(((power[c].offsetLeft + 44) > jugadorleft) && (power[c].offsetLeft < jugadorleft + jugadorleft + jugadorancho))
+    			{
+    				darpowerup(power[c]);
+
+    			}
+    		}
+    	}
+    }
+	 /*elimina el powerup y da el efecto*/
+    function darpowerup(power)
+    {
+    	var tipo = power.style.backgroundImage;
+    	console.log(tipo);
+    	switch (tipo) {
+			//da una vida
+    		case ('url("../../resources/pildorada.png")'):
+    			{
+    				let vidas = parseInt(document.getElementById('puntuacion').querySelector('p:first-child > span').innerHTML);
+    				vidas = vidas + 1;
+    				document.getElementById('puntuacion').querySelector('p:first-child > span').innerHTML = " " + vidas;
+    				break;
+    			}
+			//velocidad de la bola a la velocidad inicial
+    		case ('url("../../resources/pilverde.png")'):
+    			{
+    				let bola = document.getElementsByClassName('bola')[0];
+    				let velocidad = bola.getAttribute('velocidad');
+    				if (velocidad > 8)
+    				{
+    					velocidad = 8;
+    					bola.setAttribute('velocidad', velocidad);
+    				}		
+    				break;
+    			}
+			//hace al jugador grande
+    		case ('url("../../resources/pilroja.png")'):
+    			{
+    				let jugador = document.getElementById('jugador');
+    				if (jugador.style.backgroundImage != 'url("../../resources/jug2.png")') {
+    					let jugadorleft = jugador.offsetLeft - document.getElementById('tablero').offsetLeft;
+    					if (jugador.style.backgroundImage != 'url("../../resources/jug0.png")')
+    					{
+    						jugadorleft = jugadorleft - 22;   						
+    					}
+    					else
+    					{
+    						jugadorleft = jugadorleft - 11;
+    					}
+    					jugadorleft = jugadorleft + "px";
+    					jugador.style.width = '132px';
+    					jugador.style.backgroundImage = "url('../../resources/jug2.png')";
+    					jugador.style.left = jugadorleft;
+    				}
+    				break;
+    			}
+			//hace al jugador pequeño
+    		case ('url("../../resources/pilgris.png")'):
+    			{
+    				let jugador = document.getElementById('jugador');
+    				if (jugador.style.backgroundImage != 'url("../../resources/jug0.png")') {
+    					let jugadorleft = jugador.offsetLeft -document.getElementById('tablero').offsetLeft;
+    					if (jugador.style.backgroundImage != 'url("../../resources/jug0.png")') {
+    						jugadorleft = jugadorleft + 43;
+    					}
+    					else {
+    						jugadorleft = jugadorleft + 22;
+    					}
+    					jugadorleft = jugadorleft + "px";
+    					jugador.style.width = '46px';
+    					jugador.style.backgroundImage = "url('../../resources/jug0.png')";
+    					jugador.style.left = jugadorleft;
+    				}
+    				break;
+    			}
+    	}
+    	power.parentNode.removeChild(power);
+    }
+
+
     function morir() {
 
         let jug = document.getElementById('jugador');
         if (muriendo == 0) {
-            muriendo = 1;
-            /*Primer timeout solo valido para jugador tamaño normal*/
-            setTimeout(function () { jug.style.backgroundImage = "url('../../resources/muert1.png')" }, 200);
+        	muriendo = 1;
+        	if (jug.style.backgroundImage == 'url("../../resources/jug1.png")')
+        	{ 
+        		setTimeout(function () { jug.style.backgroundImage = "url('../../resources/muert1.png')" }, 200);
+        	}
+        	if (jug.style.backgroundImage == 'url("../../resources/jug0.png")')
+			{
+        		setTimeout(function () { jug.style.backgroundImage = "url('../../resources/muert0.png')" }, 200);
+        	}
+        	if (jug.style.backgroundImage == 'url("../../resources/jug2.png")')
+        	{
+        		setTimeout(function () { jug.style.backgroundImage = "url('../../resources/muert2.png')" }, 200);
+        	}
 
             setTimeout(function () { jug.style.backgroundPosition = '0px 22px' }, 400);
             setTimeout(function () { jug.style.backgroundPosition = '0px 44px' }, 600);
@@ -588,25 +688,44 @@
     	requestSaveRecord(puntuacion);
         let tabler = document.getElementById('tablero');
         let texto = document.createElement('h2');
+        let botonRejugar = document.createElement('button');
+        
         let aux;
         texto.innerHTML = "FIN DEL JUEGO";
         texto.style.color = "red";
-        texto.style.fontSize = "2em"
+        texto.style.fontSize = "4em"
         texto.style.position = "absolute";
-        aux = tabler.offsetTop + 550;
+        aux = tabler.offsetTop + 300;
         texto.style.top = aux + "px";
         aux = tabler.offsetLeft + 170;
         texto.style.left = aux + "px";
         tabler.appendChild(texto);
+
+        botonRejugar.innerHTML = "Volver a jugar";
+        botonRejugar.position = "absolute";
+        botonRejugar.style.position = "absolute";
+        aux = tabler.offsetTop + 380;
+        botonRejugar.style.top = aux + "px";
+        aux = tabler.offsetLeft + 160;
+        botonRejugar.style.left = aux + "px";
+        botonRejugar.addEventListener("click", jugarOtraVez);
+        tabler.appendChild(botonRejugar);
     }
-    /*etiqueta buff -> 0azul 1gris 2dorado 3morado 4rojo 5verde*/
+    /*etiqueta buff -> 0dorado 1verde 2gris 3rojo */
     function rellenarbloquesetiquetas() {
         let fichas = document.getElementsByClassName('ficha');
-
+        let tipoBuff;
         for (let c = 0; c < fichas.length; c++) {
             if (fichas[c].getAttribute('tipo') != 2) {
-                if (Math.random() > 0.80) {
-                    fichas[c].setAttribute('buff', (Math.floor(Math.random() * 6)));
+            	if (Math.random() > 0.85) {
+            		tipoBuff = Math.floor(Math.random() * 4);
+            		if (tipoBuff != 0) {
+            			fichas[c].setAttribute('buff', tipoBuff);
+            		}
+            		else
+            		{
+            			if (Math.random() > 0.66) fichas[c].setAttribute('buff', tipoBuff);
+            		}
                 }
             }
         }
@@ -615,6 +734,56 @@
     function cambiarpuntuacion() {
         document.getElementById('puntuacion').querySelector('p:first-last > span').innerHTML = " " + puntuacion;
     }
+
+    function comprobarNivelFinalizado()
+    {
+    	var fichas = document.getElementsByClassName('ficha');
+    	if (fichas.length == 0) {
+    		var jugador = document.getElementById('jugador');
+    		var bola = document.getElementsByClassName('bola')[0];
+    		jugador.parentNode.removeChild(jugador);
+    		bola.parentNode.removeChild(bola);
+    		bolalanzada = false;
+    		cargarNivel();
+    		nivelCompleto();
+    		setTimeout(nivelCompletoBorrar, 2000);
+    	}
+    }
+    function nivelCompleto()
+    {
+    	let tabler = document.getElementById('tablero');
+    	var textoNivel = document.createElement('h2');
+    	var textoInterior = "Nivel: " + (nivelactual);
+    	textoNivel.id = 'MensajeNivel';
+    	let aux;
+    	textoNivel.innerHTML = textoInterior;
+    	textoNivel.style.fontSize = "4em"
+    	textoNivel.style.position = "absolute";
+    	aux = tabler.offsetTop + 300;
+    	textoNivel.style.top = aux + "px";
+    	aux = tabler.offsetLeft + 190;
+    	textoNivel.style.left = aux + "px";
+    	tabler.appendChild(textoNivel);
+    }
+    function nivelCompletoBorrar()
+    {
+    	var mensaje = document.getElementById('MensajeNivel');
+    	mensaje.parentNode.removeChild(mensaje);
+
+    }
+
+    function sleep(milliseconds) {
+    	var start = new Date().getTime();
+    	for (var i = 0; i < 1e7; i++) {
+    		if ((new Date().getTime() - start) > milliseconds) {
+    			break;
+    		}
+    	}
+    }
+
+
+
+
     //valor del array tipo de ficha 0=un golpe 1=dos golpes 2= indestructible
     //aqui se guardan todos los niveles jugables
     function crearniveles() {
@@ -622,7 +791,7 @@
         let fila = 0;
         let columna = 0;
         niveles[0] = [];
-        for (let c = 1; c < 41; c++) {
+        for (let c = 1; c < 21; c++) {
             niveles[0][c - 1] =
                 {
                     tipo: 0,
@@ -635,6 +804,23 @@
             } else {
                 columna++;
             }
+        }
+        fila = 0;
+        columna = 0;
+        niveles[1] = [];
+        for (let c = 1; c < 41; c++) {
+        	niveles[1][c - 1] =
+                {
+                	tipo: 0,
+                	fila: fila + 3,
+                	columna: columna,
+                }
+        	if (c % 10 == 0) {
+        		fila++;
+        		columna = 0;
+        	} else {
+        		columna++;
+        	}
         }
 
         return niveles;
@@ -660,4 +846,9 @@ function requestSaveRecord(puntuacion) {
 	
     var data = JSON.stringify({ "UserName": user, "IdGame": "2", "time": time, "score": puntuacion });
     xhr.send(data);
+}
+
+function jugarOtraVez()
+{
+	window.location.href = "http://localhost:54321/games/arcanoid";
 }
