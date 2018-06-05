@@ -318,7 +318,6 @@ html {
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
   line-height: 1.428571429;
   color: white;
   background-color: black;
@@ -409,6 +408,9 @@ hr {
 
 p {
   margin: 0 0 10px;
+}
+footer > p{
+    font-size:1.3em;
 }
 
 .lead {
@@ -604,6 +606,7 @@ ol ol {
 
 dl {
   margin-bottom: 20px;
+  font-size:1.5em;
 }
 
 dt,
@@ -618,7 +621,21 @@ dt {
 dd {
   margin-left: 0;
 }
-
+dd > a{
+    color: white;
+    text-decoration: underline;
+    font: normal 1em/normal Arial, Helvetica, sans-serif;
+    text-shadow: none;
+}
+p > a{
+    color: white;
+    text-decoration: underline;
+    font: normal 1.5em/normal Arial, Helvetica, sans-serif;
+    text-shadow: none;
+}
+div > label{
+    font-size:1.5em;
+}
 @media (min-width: 768px) {
   .dl-horizontal dt {
     float: left;

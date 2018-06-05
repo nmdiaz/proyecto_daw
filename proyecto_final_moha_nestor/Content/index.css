@@ -3,3 +3,22 @@
         background-image: url('../../Content/images/index.jpg');
         color:white;
     }
+.fila {
+    display: flex;
+    font-size:1.4em;
+    column-gap: 40px;
+}
+
+.column {
+    flex: 50%;
+    padding: 10px;
+    height: 300px;
+    font-size:1.4em;
+    height:auto;
+    background-color: rgba(3,0,13,0.6);
+    text-align:justify;
+}
+.column:first-child{
+    border-right:solid;
+    border-width:1px;
+}
