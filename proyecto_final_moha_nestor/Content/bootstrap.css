@@ -7046,3 +7046,9 @@ td.visible-print {
 		{
 
 		}
+        @media(max-width:988px)
+        {
+            .navbar-inverse{
+                font-size:4.3em;
+            }
+        }
