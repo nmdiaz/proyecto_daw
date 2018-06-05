@@ -309,7 +309,7 @@
     <Content Include="Views\Shared\_NotSupported.cshtml" />
     <Content Include="Views\Shared\_indice_log_register.cshtml" />
     <Content Include="Views\Contactanos\Index.cshtml" />
-	
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
