@@ -7004,6 +7004,7 @@ td.visible-print {
 		 #index > a:hover
 		{
 			text-decoration:none;
+            color:white;
 		}
 
 		#arcanoid > .controles
