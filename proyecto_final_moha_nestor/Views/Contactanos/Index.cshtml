@@ -3,32 +3,104 @@
     ViewBag.Title = "Index";
 }
 <style>
+    body ,a ,label , form{
+        box-sizing:border-box;
+        margin:0;
+        padding:0;
+    }
     body {
         background-image: url('../../Content/images/index.jpg');
+        width: 50%;
+        margin: 2em auto;
+        min-width:400px;
     }
-    ._51m- _2pir _51mw
-    {
-        display:none;
-        font-size:0px;
+    h2{
+        margin-top:1em;
     }
+    ._51m- _2pir _51mw {
+        display: none;
+        font-size: 0px;
+    }
+
+    #form > div {
+    }
+
+    #form {
+        border: 1px solid;
+        background-color: rgba(3,0,13,0.6);
+    }
+
+        #form > div {
+            padding: 1em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 1em;
+        }
+
+            #form > div > label {
+                padding: 1em 0;
+            }
+
+              button {
+        margin-left: 0.5em;
+    }
+              input, textarea
+              {
+                  max-width:100%;
+              }
+            p{
+                margin-bottom:1em;
+            }
 </style>
-<h2>Contáctanos</h2>
-<div>
-    ¡Contacta con nosotros!
-    Si quieres conocer más información sobre Retroverse, no dudes en ponerte en contacto con nosotros a través de nuestro email contacto@retroverse.es o en nuestras redes sociales.
+@if (Request.IsAuthenticated)
+{
 
-    ¡Estaremos encantados de atenderte!
+    <h2>Contáctanos</h2>
+    <div>
+        <p>
+            ¡Contacta con nosotros!
+            Si quieres conocer más información sobre Retroverse, no dudes en ponerte en contacto con nosotros a través de nuestro email contacto@retroverse.es o en nuestras redes sociales.
 
-    ¡Síguenos!
-</div>
+            ¡Estaremos encantados de atenderte!
+
+            ¡Síguenos!
+        </p>
+        <form id="form" action="" method="post">
+            <!-- novalidate para que no salte la restriccion de mail -->
+            <div>
+                <label for="usuario">Usuario:</label>
+                <input type="text" id="usuario" name="nombre_usuario" title="Mínimo 4 caracteres" placeholder="Nombre del usuario" pattern="[A-Za-z]{4,}" required>
+                <span></span>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email_usuario" placeholder="Email" pattern="^[A-Za-z]+(.|-)*\w+\u0040\w+.\w{3}$" required>
+                <span style="color:red"></span>
+            </div>
+            <div>
+                <label for="usuario">Comentario:</label>
+                <textarea id="msg" name="msg_usuario" required></textarea>
+                <span></span>
+            </div>
+
+            <div class="boton">
+                <button type="submit">Enviar</button>
+            </div>
+
+        </form>
+        <script src="~/Scripts/Contact.js" />
+
+
+    </div>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script src="https://apis.google.com/js/platform.js" async defer>
-  {lang: 'es'}
+        { lang: 'es' }
     </script>
 
     <!-- Place this tag where you want the widget to render. -->
     <div class="g-follow" data-annotation="bubble" data-height="24" data-href="//plus.google.com/u/0/102344680133216427694" data-rel="author"></div>
-    
+
      <!--Google-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <g:follow href="https://plus.google.com/pageId" rel="relationshipType"></g:follow>
@@ -36,18 +108,21 @@
     <a href="https://twitter.com/Retroverse?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow TwitterDev</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
      <!--Facebook-->
-<div id="fb-root"></div>
-<script>
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
-<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-
-
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+}
+else
+{
+    @Html.Partial("_indice_log_register");
+}
 
 
