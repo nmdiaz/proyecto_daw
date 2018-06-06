@@ -6855,7 +6855,7 @@ td.visible-print {
 	}
 	a.recordsPersonales:link
 	{
-	   color:red;
+	   color:orange;
 	   text-decoration:none;
 	}
 	a.recordsPersonales:visited

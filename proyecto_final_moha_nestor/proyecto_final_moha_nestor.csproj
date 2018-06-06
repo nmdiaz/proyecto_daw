@@ -241,9 +241,11 @@
     <Content Include="Content\Site.css" />
     <Content Include="jsgames\arcanoid.js" />
     <Content Include="jsgames\game2048.js" />
+    <Content Include="resources\2048t.png" />
     <Content Include="resources\2048.png" />
     <Content Include="resources\2048i.png" />
     <Content Include="resources\arcanoid.gif" />
+    <Content Include="resources\arcanoidt.png" />
     <Content Include="resources\records_2048.gif" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -254,6 +256,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\test_deploy_proyect.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Contact.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
