@@ -9,56 +9,12 @@
     }
 
 /* Container box to set the sides relative to */
-.cube {
-	width: 30%;
-	text-align: center;
-	margin: 0 auto;
-	height: 200px;
-
-	-webkit-transition: -webkit-transform .33s;
-	transition: transform .33s;
-
-	-webkit-transform-style: preserve-3d;
-	transform-style: preserve-3d; 
-    margin-bottom:1em;
-}
-
-._2048,.arcanoid {
-	border: 1px solid rgba(147, 184, 189, .8);
-
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-
-	-webkit-box-shadow: 0 5px 20px rgba(105, 108, 109, .3), 0 0 8px 5px rgba(208, 223, 226, .4) inset;
-	box-shadow: 0 5px 20px rgba(105, 108, 109, .3), 0 0 8px 5px rgba(208, 223, 226, .4) inset;
-	height: 200px;
-}
-img{
-    width:100%;
-    position: relative;
-    top: 61px;
-        z-index:5;
-}
-
-.arcanoid {
-	transform: rotateX(-90deg) translateZ(-100px);
-
-}
-.arcanoid > a{
-    z-index:10;
-}
 
 
 </style>
 <h2>Listado de juegos</h2>
-<div class="row">
-    <div class="col-md-12">
-        <h3>@Html.ActionLink("2048", "g2048", "games")</h3>
-        <h3>@Html.ActionLink("arcanoid", "arcanoid", "games")</h3>
-    </div>
 
-</div>
-<button id="mover"> Siguiente</button>
+
 <div class="cube">
     <div class="_2048">
         <a href='@Url.Action("g2048", "games")'>
@@ -71,6 +27,9 @@ img{
         </a>
     </div>
 </div>
+<center>
+<button id="mover"> Siguiente</button>
+</center>
 
 
 <script>
