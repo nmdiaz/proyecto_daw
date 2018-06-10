@@ -18,11 +18,11 @@ namespace proyecto_final_moha_nestor.logic
 
                 cmd.CommandText = $"INSERT INTO Records (IdGame, IdUser, RecordTimeStamp, Points) VALUES (@idjuego, @idusuario, @tiempo, @puntos)";
                 cmd.Parameters.AddWithValue("@idjuego", model.idGame);
-            cmd.Parameters.AddWithValue("@idusuario", model.idUser);
-            cmd.Parameters.AddWithValue("@tiempo", model.time);
-            cmd.Parameters.AddWithValue("@puntos", model.score);
+                cmd.Parameters.AddWithValue("@idusuario", model.idUser);
+                cmd.Parameters.AddWithValue("@tiempo", model.time);
+                cmd.Parameters.AddWithValue("@puntos", model.score);
 
-            cmd.Connection = sqlConnection1;
+                cmd.Connection = sqlConnection1;
                 sqlConnection1.Open();
                 var error = cmd.ExecuteNonQuery();
                 sqlConnection1.Close();

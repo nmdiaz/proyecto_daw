@@ -39,9 +39,6 @@ namespace proyecto_final_moha_nestor.logic
             modelrecord.time = modeljs.time;
             modelrecord.score = modeljs.score;
 
-
-
-
             return modelrecord;
 
         }

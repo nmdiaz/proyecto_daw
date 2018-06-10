@@ -55,12 +55,12 @@ namespace proyecto_final_moha_nestor.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                message == ManageMessageId.ChangePasswordSuccess ? "Tu contraseña ha sido cambiada."
+                : message == ManageMessageId.SetPasswordSuccess ? "Tu contraseña ha sido introducida."
+                : message == ManageMessageId.SetTwoFactorSuccess ? "Método de autentificación de dos valores agregado."
+                : message == ManageMessageId.Error ? "Ha ocurrido un error."
+                : message == ManageMessageId.AddPhoneSuccess ? "Tu teléfono fue añadido."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Tu teléfono fue borrado."
                 : "";
 
             var userId = User.Identity.GetUserId();

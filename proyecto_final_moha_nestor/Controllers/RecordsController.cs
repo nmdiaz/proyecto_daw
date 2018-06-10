@@ -17,12 +17,11 @@ namespace proyecto_final_moha_nestor.Controllers
             return View();
         }
 
-
 		//Get: Records/Arcanoid
 		public ActionResult Arcanoid()
 		{
-			var a = get_records.sacarRecords("2");
-			ViewData["Records"] = a;  
+			var records = get_records.sacarRecords("2");
+			ViewData["Records"] = records;  
 			return View();
 		}
 
@@ -34,6 +33,7 @@ namespace proyecto_final_moha_nestor.Controllers
 			return View();
 		}
 
+		//Get Records/PersonalRecords
 		public ActionResult PersonalRecords()
 		{
 			var idusuario = User.Identity.GetUserId();

@@ -18,7 +18,6 @@ namespace proyecto_final_moha_nestor.Controllers
             return View();
         }
 
-
         // GET: g2048
         public ActionResult g2048()
         {
@@ -39,7 +38,7 @@ namespace proyecto_final_moha_nestor.Controllers
             if(!ModelState.IsValid)
             {
                 //agregar error de no poderse guardar
-                return "Fail";
+                return "{\"status\":\"fail\" }";
             }
             else
             {
@@ -57,7 +56,7 @@ namespace proyecto_final_moha_nestor.Controllers
 			if (!ModelState.IsValid)
 			{
 				//agregar error de no poderse guardar
-				return "Fail";
+				return "{\"status\":\"fail\" }";
 			}
 			else
 			{
