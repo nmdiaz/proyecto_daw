@@ -305,6 +305,8 @@
     <Content Include="Views\Records\g2048.cshtml" />
     <Content Include="Views\Records\PersonalRecords.cshtml" />
     <Content Include="Views\Shared\_NotLogged.cshtml" />
+    <Content Include="Views\Shared\_NotSupported.cshtml" />
+    <Content Include="Views\Shared\_indice_log_register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
